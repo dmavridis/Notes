@@ -258,7 +258,7 @@ Remember that a consensus algorithm gets its reputation from being safe for a lo
 
 There is no “perfect” consensus mechanism, and chances are that there never will be, but it is interesting to see newer cryptocurrencies coming out with their own protocols and understand their pros and cons.
 
-$$\pagebreak$$
+
 
 # Blockchain transactions
 ## Overview
@@ -832,9 +832,6 @@ _gettransaction "txid" ( include_watchonly )_
 - Does not bloat UTXO memory pool
 
 
-
-
-
 # Private Blockchains
 ## Public and Private Blockchains
 
@@ -851,4 +848,245 @@ Usage of op_return to store the hash
 
 **Polkadot**: Intermediary between blockchains. Uses a multi-chain approach with a blockchain called Relay. Then utilizes a second blockchain called parachain which gathers and processes transactions. 
 
-## Building a Simple Private Blockchain Part 1
+## Methods of POE
+We just saw how to use a pre-created notarization service. What’s really cool is that it’s possible for anyone, including us, to create a web application that verifies the existence of digital assets this same way.
+
+For example, there are other services in the space such as Factom, OriginTimestamp, and Florincoin. Feel free to check some of these out!
+
+### Proof of Existence Services
+Factom
+
+Origin Timestamp
+
+Floricoin
+
+
+### Why do we need POE
+Before trying to use this for ourselves, here’s a few quick ideas over why you might even want to to do this in the first place.
+
+Helps you demonstrate data ownership without revealing actual data.
+
+This is useful for things like copyrighted material or patents.
+Checks for the integrity of your digital asset. Any proof of existence will recognize your document FOREVER.
+
+Even the slightest difference will be recognized allowing you to be sure your asset hasn’t changed.
+Provides document Time stamping. You can use this to prove certain information existed at a certain time.
+
+This can be useful in cases where you want to prove who was the original owner of the document.
+Certifies the existence of the document without the need for a central authority.
+
+Similar to many blockchain concepts this decentralized proof can’t be erased or modified by anyone.
+
+### POE Algorithms
+There are a different of algorithms to demonstrate Proof of Existence. The two we have chosen to focus on here are SHA256 and MD5.
+
+They both serve the same purpose. They’re a way to hash a digital asset so it can be embedded in a transaction in the blockchain. This allows people to verify that a document existed at a certain point in time.
+
+**SHA256**
+This is an algorithm we’ve seen already in several different parts of the Bitcoin network. It’s used in mining as part of the proof of work algorithm.
+
+It’s also used to create secured bitcoin addresses.
+
+SHA256 stands for Secure Hash Algorithm. It is a one-way hashing function that takes in any piece of data and produces a unique hash.
+
+This is the algorithm POEX uses to secure their digital documents.
+
+**MD5**
+Next, the MD5 algorithm is a hash function that takes in a String input and produces a 128-bit hash value. This value is usually shown as a 32-character hexadecimal number that humans can read.
+
+Goals of POE Algorithms
+While each method does things a bit differently, the important thing to remember is their purpose.
+
+They hash digital assets to hide the actual content. Once the hashed data is embedded in a transaction in the blockchain, the existence of that transaction in the blockchain proves that the document existed at the time the transaction got included into a block.
+
+
+Wrap Up
+To recap, in this section we covered:
+
+Proof of Existence: The concept that publicly proving and authenticating any digital asset on the blockchain by verifying its hash.
+
+
+
+# Identity and smart contracts
+
+- Remix: A powerful, open source tool that helps you write Solidity contracts straight from the browser.
+- Truffle: A development environment, testing framework and asset pipeline for blockchains using the Ethereum Virtual Machine (EVM)
+- Ganache: A personal blockchain for Ethereum development you can use to deploy contracts, develop your applications, and run tests.
+- Solidity: the language used to write smart contacts in the Ethereum network.
+- Metamask: 
+
+**What is a DApp?**
+
+First off, a DApp, or Decentralized Application, has its backend code running on a decentralized peer-to-peer network. Contrast this with a traditional app where the backend code is running on centralized servers.
+
+A DApp can have frontend code and user interfaces written in any language (just like a traditional app) that can make calls to its backend.
+
+
+**Why is understanding how to create a notarization DApp useful?**
+
+The project associated with this course will cover many of the fundamental principles used to create a DApp that involves securing digital assets and transferring funds on the blockchain via smart contracts and allowing users to interact with this process via a frontend browser. This same concept can be applied to any sort of marketplace application you can think of.
+
+**Terms**
+
+- Ethereum: An open source, programmable public blockchain platform.
+- Ethereum Virtual Machine (EVM): Capable of executing logic, algorithms, and process data inputs.
+- Turing Complete: Any software that is able to run code written by a developer or executed by an end user.
+- Smart Contract: A contract written in code. More specifically, it is an object on the Ethereum blockchain that contains EVM code functions.
+- Solidity: High level language for coding and deploying smart contracts.
+
+### Ethereum vS Bitcoin
+
+- Permission restrictions: both permsissonless
+- Consensus: Now bot PoW
+- Scalability: High nose, low performance
+- Regulation: ETH-Medium, BTC-Low decentralized decision making communuty
+- Anoni,ity: Pseudoanonymity
+- Native Currency: ETH and BTC
+- Scripting: Turing machine EVM
+
+### Proof of Work to Proof of Stake Algorithm
+PoS Benefit
+
+- No much electricity
+- Issuance of several new coins might not be necessary
+- Potentially discourages selfish miners
+- Rewards are not exponential to Economies of Scale
+- Less changes of a 51% attack because of economic penalties
+
+## World state
+In BTC, UTXO's define the state
+
+Ethereum World State
+- Nonce
+- Balance
+- Storage Hash
+- Code hash
+- Account Storage
+- Ethereum Virtual Code
+
+In overall: ETH has Blockchain (Transactions) and Account State (Accounts, addresses, balances). 
+
+Patricia tree: Practical Algorthm to retrieve information coded in alphanumeric
+
+## Ethereum Accounts
+EOA and Contract Accounts
+
+EOA Contents
+- Account balance
+- TX count
+
+EOA abilities
+- Send transactions
+- Initiate a smart contract
+- Transfer value from its wallet
+
+CA Contents
+- + smart contract code
+
+Abilities
+- Transfer value
+- Initiate another smart contract
+- Execute smart contracts
+- Manipulate storage
+
+Account State Variables
+- Nonce: Number of transaction in the account
+- Account Balance: Total value of Ether available on the account 
+- Storage Hash: Root node of the Patricia tree
+- Code Hash: Hash of the code within the smart contract
+
+## Transactions and Messages
+Transactions move the state of the account. Two types **Message calls** and **Contract Creation**
+
+
+![Transaction types](images/transaction-types.png)
+
+
+Nonce solves the replay attack problem
+
+**Gas Price**: Price per unit of gas you are willing to pay for executing the code in your smart contract. Similar to miner's fees in BTC
+
+**Gas Limit**: Specifies the max number of computational steps the transaction is allowed
+
+**To**: recipient address
+
+**Value**: The amount of ether you want to send
+
+## Ethereum Virtual Machine
+All of the computations that take place on the Ethereum network happen on what is called the Ethereum Virtual Machine. The Ethereum Virtual Machine (EVM) is responsible for an enormous amount of tasks. Given it's worldwide set of computer nodes that contribute to the creation of this EVM, it also goes by the name of "The World Computer". 
+
+
+A virtual machine that executes code. A rutime environment for Smart Contracts.
+
+## Ethereum Network Performance
+BestBlock: The highest block number of the longest valid chain, said differently it is heavy with cumulative difficulty.
+
+Uncles: Orphaned blocks and unlike other blockchains, in Ethereum they are included and rewarded. The dashboard displays current bloc uncle count and that from last 50 blocks.
+
+LastBlock: The time since the last mined block in seconds.
+
+AverageBlock: Average time between two block (excl. uncles) - should display 15 seconds unless the network is really slow.
+
+AverageNetworkHashrate: Number of hashes spent by miners to find a new block. 250 TH/s is 250 trillion network hash power per second.
+
+Difficulty: Also known as the mining difficulty to find a new block.
+
+ActiveNodes: The number of nodes connected to the dashboard. The total number of active connected nodes powering the network is quite high.
+
+GasPrice: The price miners are currently accepting. Currently it is ~40 gwei, which is 40 giga wei, which is 40 billion wei. The default is 20 gwei.
+
+GasLimit: The gas limit for a block. The dashboard reads 7,999,992 gas and the miner can include transactions until the block is full and limit is met. The default is 4,712,388 (1.5 pi million gas) In bitcoin you might have come across block size limit.
+
+PageLatency: A dashboard stat.
+
+Uptime: A dashboard stat.
+
+BlockTimeChart: Maps out actual time between blocks.
+
+DifficultyChart: Maps out actual difficulty of previous blocks.
+
+BlockPropagationChart: For the nodes connected to the dashboard, it is how fast blocks are shared/propagated between nodes.
+
+LastBlockMiners: Displays the public key of the last miners who found the most number of blocks.
+
+UncleCountChart: Displays number of uncles per 25 blocks per bar.
+
+TransactionsChart: Displays the number of transactions included in previous blocks.
+
+GasSpendingChart: Correlated to Transactions Chart and displays the amount of spent gas.
+
+GasLimitChart: Dynamic in nature and shows Gas Limit for the previous blocks.
+
+
+## Smart contract and solidity
+**DApps**: A DApp has its backend code running on a decentralized peer-to-peer network.
+
+
+![DApp stack](images/stack.png)
+
+## Tooling for smart contracts
+Metamask allows the users on a website to do actions using their own wallets without providing their private keys for us to do actions on their behalf. It also gives users more transparency on what transactions are being made based on their interaction with the website.
+
+## Solidity visibility
+- **external**: External functions are part of the contract interface, which means they can be called from other contracts and via transactions. An external function f cannot be called internally (i.e. f() does not work, but this.f() works). External functions are sometimes more efficient when they receive large arrays of data.
+- **public**: Public functions are part of the contract interface and can be either called internally or via messages. For public state variables, an automatic getter function is generated.
+- **internal**: Those functions and state variables can only be accessed internally (i.e. from within the current contract or contracts deriving from it), without using this.
+- **private**: Private functions and state variables are only visible for the contract they are defined in and not in derived contracts.
+
+- **constant or view**: A function marked as a view promises not to modify any state. The term constant is an alias for view that will be deprecated. At this time, the compiler does not enforce the view modifier, only producing a warning, but this is expected to become an enforced keyword in v0.5 of Solidity.
+
+- **pure**: A pure function is one that neither reads nor writes any variables in storage. It can only operate on arguments and return data, without reference to any stored data. Pure functions are intended to encourage declarative-style programming without side-effects or state.
+
+- **payable**: A payable function is one that can accept incoming payments. Functions without payable will reject incoming payments. There are two exceptions, due to design decisions in the EVM: coinbase payments and SELFDESTRUCT inheritance will be paid, even if the fallback function is not attributed as payable, but this makes sense because code execution is not part of those payments anyway.
+
+
+**Events** are Solidity constructs that facilitate the production of transaction logs.
+
+# To be continued
+- Architecture and Survey of Platforms
+- Supply Chains, Data Auditing & Hybrid Solutions
+- Supply chain and distributions 
+
+
+# Abbreviations
+- ABI: Application Binary Interface 
